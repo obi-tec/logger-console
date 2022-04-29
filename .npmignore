@@ -10,5 +10,8 @@
 # test
 test/*
 
-#npm
+# npm
 .npmrc
+
+# gitbu
+.github
