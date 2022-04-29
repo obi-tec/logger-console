@@ -1,0 +1,23 @@
+{
+  "name": "@obi-tec/logger-console",
+  "version": "1.0.0",
+  "description": "A simple library write log for Lambda Applications with Cloudwath logs.",
+  "main": "src/index.js",
+  "dependencies": {
+    "json-stringify-safe": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obi-tec/logger-console.git"
+  },
+  "author": "Obi-Tec",
+  "license": "Apache License",
+  "bugs": {
+    "url": "https://github.com/obi-tec/logger-console/issues"
+  },
+  "homepage": "https://github.com/obi-tec/logger-console#readme"
+}
