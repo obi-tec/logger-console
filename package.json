@@ -1,6 +1,6 @@
 {
   "name": "@obi-tec/logger-console",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple library write log for Lambda Applications with Cloudwatch logs.",
   "keywords": [
     "Log",
