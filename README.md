@@ -1,5 +1,5 @@
 # Logger Console
-A simple library write log for Lambda Applications with Cloudwath logs.
+A simple library write log for Lambda Applications with Cloudwatch logs.
 
 ## Installation
 ```bash
@@ -12,7 +12,10 @@ const logger = require('@obi-tec/logger-console');
 
 logger.info('Some log info');
 
-logger.info('Some log info with details', {otherMessage: 'Some other message'});
+const details = {
+    otherMessage: 'Some other message'
+};
+logger.info('Some log info with details', details);
 ```
 
 ## Change log level
