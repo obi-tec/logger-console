@@ -1,7 +1,14 @@
 {
   "name": "@obi-tec/logger-console",
   "version": "1.0.0",
-  "description": "A simple library write log for Lambda Applications with Cloudwath logs.",
+  "description": "A simple library write log for Lambda Applications with Cloudwatch logs.",
+  "keywords": [
+    "Log",
+    "Logger",
+    "Console",
+    "lambda",
+    "Cloudwatch"
+  ],
   "main": "src/index.js",
   "dependencies": {
     "json-stringify-safe": "^5.0.1"
