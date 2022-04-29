@@ -17,7 +17,7 @@ const logLevels = {
  * @param  {Object} details - The object details to log
  */
 module.exports.debug = (message, details) => {
-  if (logLevels[level] <= logLevels.info) {
+  if (logLevels[level] <= logLevels.debug) {
     if (details) {
       // eslint-disable-next-line no-console
       console.debug(stringify({
