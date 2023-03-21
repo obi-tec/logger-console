@@ -124,8 +124,12 @@ module.exports.request = (request) => {
       level   : 'info',
       message : 'req',
       details : {
-        url    : request.url,
-        method : request.method
+        url     : request.url,
+        method  : request.method,
+        headers : request.headers,
+        body    : request.body,
+        params  : request.params,
+        query   : request.query
       }
     }));
   }
