@@ -4,10 +4,10 @@ declare module '@obi-tec/logger-console' {
   interface Request {
     url: string;
     method: string;
-    headers: Record<string, string>;
-    body: string;
-    params: Record<string, string>;
-    query: Record<string, string>;
+    headers?: Record<string, string>;
+    body?: string;
+    params?: Record<string, string>;
+    query?: Record<string, string>;
   }
 
   export function debug(message: string, details?: any): void;
