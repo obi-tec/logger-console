@@ -2,6 +2,7 @@ declare module '@obi-tec/logger-console' {
   type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'request' | 'none';
 
   interface Request {
+    cookies?: Record<string, string>,
     url: string;
     method: string;
     headers?: Record<string, string>;
