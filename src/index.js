@@ -118,6 +118,13 @@ module.exports.error = (message, error) => {
  * @param  {Request} request - The request to log
  */
 module.exports.request = (request) => {
+
+  Object.keys(request.body).forEach(key => {
+    if(key.includes('password') || key.includes('secret')) {
+      delete request.body[key]
+    }
+  })
+
   if (logLevels[level] <= logLevels.request) {
     // eslint-disable-next-line no-console
     console.info(stringify({
@@ -129,7 +136,8 @@ module.exports.request = (request) => {
         headers : request.headers,
         body    : request.body,
         params  : request.params,
-        query   : request.query
+        query   : request.query,
+        cookies : request.cookies
       }
     }));
   }
