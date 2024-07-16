@@ -119,11 +119,7 @@ module.exports.error = (message, error) => {
  */
 module.exports.request = (request) => {
 
-  Object.keys(request.body).forEach(key => {
-    if(key.includes('password') || key.includes('secret')) {
-      delete request.body[key]
-    }
-  })
+  let { password, secret, ...formatedBody } = request.body;
 
   if (logLevels[level] <= logLevels.request) {
     // eslint-disable-next-line no-console
@@ -134,7 +130,7 @@ module.exports.request = (request) => {
         url     : request.url,
         method  : request.method,
         headers : request.headers,
-        body    : request.body,
+        body    : formatedBody,
         params  : request.params,
         query   : request.query,
         cookies : request.cookies
