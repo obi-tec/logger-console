@@ -119,7 +119,14 @@ module.exports.error = (message, error) => {
  */
 module.exports.request = (request) => {
 
-  let { password, secret, ...formatedBody } = request.body;
+  const notAllowed = ['password', 'secret']
+
+  const filteredBody = Object.keys(request.body)
+  .filter(key => !notAllowed.includes(key))
+  .reduce((obj, key) => {
+    obj[key] = request.body[key];
+    return obj;
+  }, {});
 
   if (logLevels[level] <= logLevels.request) {
     // eslint-disable-next-line no-console
@@ -130,7 +137,7 @@ module.exports.request = (request) => {
         url     : request.url,
         method  : request.method,
         headers : request.headers,
-        body    : formatedBody,
+        body    : filteredBody,
         params  : request.params,
         query   : request.query,
         cookies : request.cookies
