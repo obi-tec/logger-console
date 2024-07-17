@@ -112,21 +112,28 @@ module.exports.error = (message, error) => {
  * @typedef {Object} Request
  * @property {string} url - The url of the request
  * @property {string} method - The method of the request
+ * @property {Object} [cookies] - The method of the request
+ * @property {Object} [headers] - The method of the request
+ * @property {string} [body] - The method of the request
+ * @property {Object} [params] - The method of the request
+ * @property {Object} [query] - The method of the request
  */
 
 /** Log a request http message, level 50
  * @param  {Request} request - The request to log
  */
 module.exports.request = (request) => {
-
   const notAllowed = ['password', 'secret']
 
-  const filteredBody = Object.keys(request.body)
-  .filter(key => !notAllowed.includes(key))
-  .reduce((obj, key) => {
-    obj[key] = request.body[key];
-    return obj;
-  }, {});
+  let filteredBody;
+  if (request.body) {
+    filteredBody = Object.keys(request.body)
+      .filter(key => !notAllowed.includes(key))
+      .reduce((obj, key) => {
+        obj[key] = request.body[key];
+        return obj;
+      }, {});
+  }
 
   if (logLevels[level] <= logLevels.request) {
     // eslint-disable-next-line no-console
