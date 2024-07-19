@@ -112,15 +112,18 @@ module.exports.error = (message, error) => {
  * @typedef {Object} Request
  * @property {string} url - The url of the request
  * @property {string} method - The method of the request
- * @property {Object} [cookies] - The method of the request
- * @property {Object} [headers] - The method of the request
- * @property {string} [body] - The method of the request
- * @property {Object} [params] - The method of the request
- * @property {Object} [query] - The method of the request
+ * @property {string} [message] - The message of the request
+ * @property {Object} [cookies] - The cookies of the request
+ * @property {Object} [headers] - The headers of the request
+ * @property {string} [body] - The body of the request
+ * @property {Object} [params] - The params of the request
+ * @property {Object} [query] - The query of the request
+ * @property {Object} [custom] - The custom data of the request
  */
 
 /** Log a request http message, level 50
  * @param  {Request} request - The request to log
+ * @param  {string} [requestMessage] - The request message to log
  */
 module.exports.request = (request) => {
   const notAllowed = ['password', 'secret']
@@ -139,7 +142,7 @@ module.exports.request = (request) => {
     // eslint-disable-next-line no-console
     console.info(stringify({
       level   : 'info',
-      message : 'req',
+      message : request.message || 'req',
       details : {
         url     : request.url,
         method  : request.method,
@@ -147,7 +150,8 @@ module.exports.request = (request) => {
         body    : filteredBody,
         params  : request.params,
         query   : request.query,
-        cookies : request.cookies
+        cookies : request.cookies,
+        custom  : request.custom
       }
     }));
   }

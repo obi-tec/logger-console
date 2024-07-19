@@ -5,10 +5,12 @@ declare module '@obi-tec/logger-console' {
     cookies?: Record<string, string>,
     url: string;
     method: string;
+    message?: string;
     headers?: Record<string, string>;
     body?: string;
     params?: Record<string, string>;
     query?: Record<string, string>;
+    custom?: Record<string, string>;
   }
 
   export function debug(message: string, details?: any): void;
