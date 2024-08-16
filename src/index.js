@@ -1,6 +1,7 @@
 // dependencies
 const stringify = require('json-stringify-safe');
 
+let _requestId;
 const level = process.env.LOG_LEVEL || 'info';
 
 const logLevels = {
@@ -23,13 +24,15 @@ module.exports.debug = (message, details) => {
       console.debug(stringify({
         level: 'debug',
         message,
+        requestId: _requestId,
         details
       }));
     } else {
       // eslint-disable-next-line no-console
       console.debug(stringify({
         level: 'debug',
-        message
+        message,
+        requestId: _requestId,
       }));
     }
   }
@@ -46,13 +49,15 @@ module.exports.info = (message, details) => {
       console.info(stringify({
         level: 'info',
         message,
+        requestId: _requestId,
         details
       }));
     } else {
       // eslint-disable-next-line no-console
       console.info(stringify({
         level: 'info',
-        message
+        message,
+        requestId: _requestId
       }));
     }
   }
@@ -69,13 +74,15 @@ module.exports.warn = (message, details) => {
       console.warn(stringify({
         level: 'warn',
         message,
+        requestId: _requestId,
         details
       }));
     } else {
       // eslint-disable-next-line no-console
       console.warn(stringify({
         level: 'warn',
-        message
+        message,
+        requestId: _requestId
       }));
     }
   }
@@ -92,6 +99,7 @@ module.exports.error = (message, error) => {
       console.error(stringify({
         level : 'error',
         message,
+        requestId: _requestId,
         error : {
           name  : error.name,
           stack : error.stack,
@@ -102,7 +110,8 @@ module.exports.error = (message, error) => {
       // eslint-disable-next-line no-console
       console.error(stringify({
         level: 'error',
-        message
+        message,
+        requestId: _requestId
       }));
     }
   }
@@ -143,6 +152,7 @@ module.exports.request = (request) => {
     console.info(stringify({
       level   : 'info',
       message : request.message || 'req',
+      requestId: _requestId,
       details : {
         url     : request.url,
         method  : request.method,
@@ -157,3 +167,9 @@ module.exports.request = (request) => {
   }
 };
 
+/** Set request ID
+ * @param  {string} requestId - Unique ID for each request
+ */
+module.exports.setRequestId = (requestId) => {
+  _requestId = requestId;
+};

@@ -18,6 +18,7 @@ declare module '@obi-tec/logger-console' {
   export function warn(message: string, details?: any): void;
   export function error(message: string, error?: any): void;
   export function request(request: Request): void;
+  export function setRequestId(requestId: string): void;
 
   export const logLevels: Record<LogLevel, number>;
   export const level: LogLevel;
